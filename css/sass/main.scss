@@ -5,8 +5,14 @@
 @import "abstracts/mixins";
 
 // ./base
+@import "base/responsive";
 @import "base/tags";
 @import "base/typography";
+
+// ./components
+@import "components/badges";
+@import "components/card";
+@import "components/messages";
 
 // ./pages
 @import "pages/home";
