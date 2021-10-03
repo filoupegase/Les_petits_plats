@@ -1,0 +1,16 @@
+html {
+  box-sizing: border-box;
+
+  color: $neutral-900;
+  font-family: $txt-font;
+  font-size: 1rem;
+  font-weight: 400;
+
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}

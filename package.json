@@ -4,7 +4,7 @@
   "description": "Développez un algorithme de recherche en JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:sass": "sass --watch ./css/sass/main.scss:./css/style.css --style compressed"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/filoupegase/les_petits_plats/issues"
   },
-  "homepage": "https://github.com/filoupegase/les_petits_plats#readme"
+  "homepage": "https://github.com/filoupegase/les_petits_plats#readme",
+  "dependencies": {
+    "sass": "^1.42.1"
+  }
 }
