@@ -41,8 +41,8 @@ $large-container-width: 1340px;
 $grid-1: 0.5rem; // for a grid based on a 8px unit if 1rem stays to 16px
 
 // geometric progression
-//$grid-sm: $grid-1 / 2;
-//$grid-xs: $grid-1 / 4;
+$grid-sm: $grid-1 / 2;
+$grid-xs: $grid-1 / 4;
 
 $grid-2: $grid-1 * 2; // arithmetic progression
 $grid-3: $grid-1 * 3;
