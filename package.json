@@ -4,6 +4,7 @@
   "description": "Développez un algorithme de recherche en JavaScript",
   "main": "index.js",
   "scripts": {
+    "serv": "http-server",
     "watch:sass": "sass --watch ./css/sass/main.scss:./css/style.css --style compressed"
   },
   "repository": {
