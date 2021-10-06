@@ -2,14 +2,6 @@
 const cardsInner = document.getElementById('cards-wrapper');
 const JsonUrl = "../data/recipes.json";
 
-// fetch(JsonUrl)
-//   .then(response => {
-//     return console.log(response.json)
-//   }).then()
-//   .catch(error => {
-//   console.error(error);
-// })
-
 async function loadRecipes() {
   const response = await fetch(JsonUrl, {
     method: 'GET'
