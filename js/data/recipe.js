@@ -6,8 +6,8 @@ export class Recipe {
     ingredients,
     time,
     description,
-    appliance,
-    ustensils
+    ustensils,
+    appliance
   ) {
     this.id = id;
     this.name = name;
@@ -15,7 +15,11 @@ export class Recipe {
     this.ingredients = ingredients;
     this.time = time;
     this.description = description;
-    this.appliance = appliance;
     this.ustensils = ustensils;
+    this.appliance = appliance;
+  }
+
+  get nameFilterWithNoAccents() {
+    return RemoveAccents(this.name);
   }
 }

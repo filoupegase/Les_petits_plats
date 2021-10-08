@@ -1,8 +1,6 @@
-import { recipes } from "./recipesData.js";
-import {Recipe} from "./recipe";
-import {RecipeList} from "./recipeList";
+import { Recipe } from "./recipe";
+import { RecipeList } from "./recipeList";
 
-// console.log(recipes);
 
 export class FetchRecipes {
   constructor(sourceData) {
