@@ -1,7 +1,7 @@
 import { RECIPES } from "./data/recipesData.js";
 
 import {FetchRecipes} from "./data/fetchRecipes";
-import { removeStopWords } from "../../pirate/les-petits-plats/js/utilities/strings";
+import { removeStopWords } from "./utils/utilitis";
 
 const dataFetcher = new FetchRecipes(RECIPES);
 const recipesList = dataFetcher.getListRecipe();
@@ -15,6 +15,8 @@ function makeHashTableForSearchingRecipes(recipesList) {
     recipeWords = recipeWords.split(" ");
 
     const recipeKeyWords = removeStopWords(recipeWords);
+
+
   }
   return hashTableSearchingRecipes
 }

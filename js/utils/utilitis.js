@@ -1,3 +1,5 @@
+
+
 function trimWords(words) {
   const trimmedWords = [];
 
@@ -19,4 +21,11 @@ export function RemoveAccents(str) {
 
 export function removeStopWords(words) {
   const trimWords = trimWords(words);
+  const filterWords = [];
+
+  for (let word of trimWords) {
+    let wordWithoutAccent = RemoveAccents(words);
+  }
+
+  return filterWords;
 }
