@@ -1,6 +1,11 @@
-// import { recipes } from "../data/recipes";
-const cardsInner = document.getElementById('cards-wrapper');
-const JsonUrl = "../data/recipes.json";
+import { RECIPES } from "../data/recipes";
+// const cardsInner = document.getElementById('cards-wrapper');
+const JsonUrl = "./data/recipes.json";
+import {FetchRecipes} from "./data/fetchRecipes";
+
+const dataFetcher = new FetchRecipes(RECIPES);
+
+console.log("dataFetcher");
 
 // fetch(JsonUrl)
 //   .then(response => {
@@ -9,6 +14,8 @@ const JsonUrl = "../data/recipes.json";
 //   .catch(error => {
 //   console.error(error);
 // })
+
+
 
 async function loadRecipes() {
   const response = await fetch(JsonUrl, {
