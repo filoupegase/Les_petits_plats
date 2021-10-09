@@ -6,7 +6,6 @@ function trimWords(words) {
   for (let word of words) {
     trimmedWords.push(word.trim());
   }
-
   return trimmedWords;
 }
 

@@ -15,8 +15,6 @@ function makeHashTableForSearchingRecipes(recipesList) {
     recipeWords = recipeWords.split(" ");
 
     const recipeKeyWords = removeStopWords(recipeWords);
-
-
   }
   return hashTableSearchingRecipes
 }
