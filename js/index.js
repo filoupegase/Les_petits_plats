@@ -19,6 +19,7 @@ function makeHashTableForSearchingRecipes(recipesList) {
       for (let i = 1; i <= keyword.length; i++) {
         const troncatedKeyword = keyword.slice(0, 1);
       }
+
     }
   }
   return hashTableSearchingRecipes
