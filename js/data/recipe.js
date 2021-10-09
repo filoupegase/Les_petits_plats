@@ -1,3 +1,5 @@
+import { removeAccents } from "../utils/utilitis";
+
 export class Recipe {
   constructor(
     id,
@@ -6,8 +8,8 @@ export class Recipe {
     ingredients,
     time,
     description,
-    ustensils,
-    appliance
+    appliance,
+    ustensils
   ) {
     this.id = id;
     this.name = name;
@@ -15,11 +17,11 @@ export class Recipe {
     this.ingredients = ingredients;
     this.time = time;
     this.description = description;
-    this.ustensils = ustensils;
     this.appliance = appliance;
+    this.ustensils = ustensils;
   }
 
   get nameFilterWithNoAccents() {
-    return RemoveAccents(this.name);
+    return removeAccents(this.name);
   }
 }

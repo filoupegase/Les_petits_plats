@@ -1,5 +1,3 @@
-
-
 function trimWords(words) {
   const trimmedWords = [];
 
@@ -9,7 +7,7 @@ function trimWords(words) {
   return trimmedWords;
 }
 
-export function RemoveAccents(str) {
+export function removeAccents(str) {
   // string
   //   .toLowerCase = function () {
   //   return undefined;
@@ -23,7 +21,11 @@ export function removeStopWords(words) {
   const filterWords = [];
 
   for (let word of trimWords) {
-    let wordWithoutAccent = RemoveAccents(words);
+    let wordWithoutAccent = removeAccents(words);
+
+    if (word.length > 1) {
+      filterWords.push(word);
+    }
   }
 
   return filterWords;

@@ -1,6 +1,5 @@
 import { RECIPES } from "./data/recipesData.js";
-
-import {FetchRecipes} from "./data/fetchRecipes";
+import { FetchRecipes } from "./data/fetchRecipes";
 import { removeStopWords } from "./utils/utilitis";
 
 const dataFetcher = new FetchRecipes(RECIPES);
@@ -15,6 +14,12 @@ function makeHashTableForSearchingRecipes(recipesList) {
     recipeWords = recipeWords.split(" ");
 
     const recipeKeyWords = removeStopWords(recipeWords);
+
+    for (let keyword of recipeKeyWords) {
+      for (let i = 1; i <= keyword.length; i++) {
+        const troncatedKeyword = keyword.slice(0, 1);
+      }
+    }
   }
   return hashTableSearchingRecipes
 }
