@@ -1,6 +1,8 @@
 import { RECIPES } from "./data/recipesData.js";
-import { FetchRecipes } from "./data/fetchRecipes";
-import { removeStopWords } from "./utils/utilitis";
+
+import { FetchRecipes } from "./data/fetchRecipes.js";
+
+import { removeStopWords } from "./utils/utilitis.js";
 
 const dataFetcher = new FetchRecipes(RECIPES);
 const recipesList = dataFetcher.getListRecipe();
