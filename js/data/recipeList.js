@@ -6,15 +6,15 @@ export class RecipeList {
     this._sortByName();
   }
 
-  get sortedAppliances() {
+  get sortAppliances() {
     return sortAlpha(this._collectAppliances());
   }
 
-  get sortedIngredients() {
+  get sortIngredients() {
     return sortAlpha(this._collectIngredients());
   }
 
-  get sortedUstensils() {
+  get sortUstensils() {
     return sortAlpha(this._collectUstensils());
   }
 
@@ -57,7 +57,7 @@ export class RecipeList {
     const ustensils = new Set();
 
     for (let recipe of this.recipes) {
-      for (let ustensil of recipe.ustensil) {
+      for (let ustensil of recipe.ustensils) {
         ustensils.add(capFirstChar(ustensil));
       }
     }
