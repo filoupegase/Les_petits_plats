@@ -4,6 +4,8 @@ import { FetchRecipes } from "./data/fetchRecipes.js";
 
 import { removeStopWords } from "./utils/utilitis.js";
 
+import { HomePageBuilder } from "./vue/homePageBuilder.js";
+
 const dataFetcher = new FetchRecipes(RECIPES);
 const recipesList = dataFetcher.getListRecipe();
 
@@ -37,6 +39,8 @@ const HASH_TABLE_FOR_SEARCHING_RECIPES =
 
 console.log(HASH_TABLE_FOR_SEARCHING_RECIPES);
 
+new HomePageBuilder(recipesList, HASH_TABLE_FOR_SEARCHING_RECIPES).render();
+
 measureAlgorithmPerformance();
 
 function measureAlgorithmPerformance() {
@@ -50,7 +54,7 @@ function measureAlgorithmPerformance() {
     joinBadges: "maîs basilic"
   };
 
-  const TESTS_QUANTITY =1_000;
+  const TESTS_QUANTITY = 1_000;
 
   let TEST_STARTING = Date.now();
   // console.log(TEST_STARTING)
