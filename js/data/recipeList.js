@@ -1,4 +1,4 @@
-import { sortAlpha } from "../utils/utilitis.js";
+import { sortAlpha, capFirstChar } from "../utils/utilitis.js";
 
 export class RecipeList {
   constructor(recipes) {
@@ -27,7 +27,7 @@ export class RecipeList {
     const appliances = new Set();
 
     for (let recipe of this.recipes) {
-      appliances.add(capitalizeFirstChar(recipe.appliance));
+      appliances.add(capFirstChar(recipe.appliance));
     }
 
     return [...appliances]

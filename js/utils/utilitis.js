@@ -46,7 +46,7 @@ export function removeStopWords(words) {
 /**
  * @return {string}
  */
-export function capitalizeFirstChar(str) {
+export function capFirstChar(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
