@@ -17,9 +17,14 @@ function makeHashTableForSearchingRecipes(recipesList) {
 
     for (let keyword of recipeKeyWords) {
       for (let i = 1; i <= keyword.length; i++) {
-        const troncatedKeyword = keyword.slice(0, 1);
-      }
+        const truncatedKeyword = keyword.slice(0, i);
 
+        if (truncatedKeyword in hashTableSearchingRecipes) {
+          hashTableSearchingRecipes[truncatedKeyword].add(recipe);
+        } else {
+          hashTableSearchingRecipes[truncatedKeyword] = new Set([recipe]);
+        }
+      }
     }
   }
   return hashTableSearchingRecipes
