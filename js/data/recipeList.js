@@ -6,8 +6,16 @@ export class RecipeList {
     this._sortByName();
   }
 
-  get sortedApplicances() {
+  get sortedAppliances() {
     return sortAlpha(this._collectAppliances());
+  }
+
+  get sortedIngredients() {
+    return sortAlpha(this._collectIngredients());
+  }
+
+  get sortedUstensils() {
+    return sortAlpha(this._collectUstensils());
   }
 
   _sortByName() {
@@ -30,7 +38,31 @@ export class RecipeList {
       appliances.add(capFirstChar(recipe.appliance));
     }
 
-    return [...appliances]
+    return [...appliances];
+  }
+
+  _collectIngredients() {
+    const ingredients = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let item of recipe.ingredients) {
+        ingredients.add(capFirstChar(item.ingredient));
+      }
+    }
+
+    return [...ingredients];
+  }
+
+  _collectUstensils() {
+    const ustensils = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let ustensil of recipe.ustensil) {
+        ustensils.add(capFirstChar(ustensil));
+      }
+    }
+
+    return [...ustensils];
   }
 
   search(TEST_REQUEST_1, HASH_TABLE_FOR_SEARCHING_RECIPES) {
