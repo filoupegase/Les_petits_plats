@@ -21,6 +21,10 @@ export class Recipe {
     this.ustensils = ustensils;
   }
 
+  get applianceNameWithoutAccent(){
+    return removeAccents(this.appliance);
+  }
+
   get nameFilterWithNoAccents() {
     return removeAccents(this.name);
   }

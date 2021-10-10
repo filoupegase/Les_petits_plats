@@ -43,6 +43,12 @@ export function removeStopWords(words) {
   return filterWords;
 }
 
+/**
+ * @return {string}
+ */
+export function capitalizeFirstChar(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
 
 export function sortAlpha(string) {
   const nonAccentuatedStrings = [];
