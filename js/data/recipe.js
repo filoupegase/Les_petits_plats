@@ -1,4 +1,4 @@
-import { removeAccents } from "../utils/utilitis";
+import { removeAccents } from "../utils/utilitis.js";
 
 export class Recipe {
   constructor(

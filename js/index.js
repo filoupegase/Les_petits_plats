@@ -10,7 +10,7 @@ const recipesList = dataFetcher.getListRecipe();
 function makeHashTableForSearchingRecipes(recipesList) {
   const hashTableSearchingRecipes = {};
 
-  for (let recipe of recipesList.recipesHash) {
+  for (let recipe of recipesList.recipes) {
     let recipeWords = `${recipe.nameFilterWithNoAccents}`;
 
     recipeWords = recipeWords.split(" ");

@@ -1,4 +1,4 @@
-import { sortAlpha } from "../utils/utilitis";
+import { sortAlpha } from "../utils/utilitis.js";
 
 export class RecipeList {
   constructor(recipes) {

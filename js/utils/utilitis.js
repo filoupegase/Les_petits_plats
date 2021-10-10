@@ -16,13 +16,8 @@ function trimWords(words) {
 }
 
 export function removeAccents(str) {
-  // string
-  //   .toLowerCase = function () {
-  //   return undefined;
-  // }
-  return str
-    .toLowerCase()
-    .replace(/[.,;:!\?\*"()°]/g, "")
+  return str.toString().toLowerCase()
+    .replace(/[.,;:!?*+"=/()°]/g, "")
     .replace(/[']/g, " ")
     .replace(/[\d]/g, "")
     .replace(/[àäâ]/g, "a")
@@ -35,10 +30,10 @@ export function removeAccents(str) {
 }
 
 export function removeStopWords(words) {
-  const trimWords = trimWords(words);
+  const trimmedWords = trimWords(words);
   const filterWords = [];
 
-  for (let word of trimWords) {
+  for (let word of trimmedWords) {
     let wordWithoutAccent = removeAccents(words);
 
     if (word.length > 1 && !HASH_STOP_WORDS.includes(wordWithoutAccent)) {

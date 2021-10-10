@@ -1,6 +1,5 @@
-import { Recipe } from "./recipe";
-import { RecipeList } from "./recipeList";
-
+import { Recipe } from "./recipe.js";
+import { RecipeList } from "./recipeList.js";
 
 export class FetchRecipes {
   constructor(sourceData) {
@@ -11,8 +10,7 @@ export class FetchRecipes {
     const recipesHash = [];
 
     for (let recipe of this._sourceData) {
-      recipesHash.push(
-        new Recipe(
+      recipesHash.push(new Recipe(
           recipe.id,
           recipe.name,
           recipe.servings,
