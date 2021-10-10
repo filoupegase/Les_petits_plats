@@ -18,4 +18,8 @@ export class RecipeList {
       return 0;
     });
   }
+
+  search(TEST_REQUEST_1, HASH_TABLE_FOR_SEARCHING_RECIPES) {
+    return undefined;
+  }
 }
