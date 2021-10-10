@@ -12,7 +12,6 @@ async function loadRecipes() {
   recipes.forEach(recipe => {
     console.log(recipe);
 
-    // recipe.tag = document.createElement(`<article></article>`)
     cardsInner.innerHTML += `<article class="c-card lg4 md6 sm12" data-card-id="${
       recipe.id
     }">
@@ -27,7 +26,7 @@ async function loadRecipes() {
           </h2>
           <div class="c-card__recipe row-12 has-gutter-lg">
             <div class="c-card__ingredients lg6 md6 sm6">
-              ...ingredient
+              ingredients...
             </div>
             <div class="c-card__description lg6 md6 sm6">
               <p>${recipe.description}</p>
