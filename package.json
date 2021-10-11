@@ -9,8 +9,7 @@
     "watch:sass": "sass --watch ./css/sass/main.scss:./css/style.css --style compressed"
   },
   "gitHooks": {
-    "pre-commit": "npm run lint",
-    "pre-push": "validate-branch-name"
+    "pre-commit": "npm run lint"
   },
   "repository": {
     "type": "git",
