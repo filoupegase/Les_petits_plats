@@ -40,25 +40,25 @@ export class HomePageBuilder {
   }
 
   render() {
-    this._renderFiltersOption(this._filtersItems)
+    // this._renderFiltersOption(this._filtersItems)
     this._renderCards(this._recipeList);
   }
 
-  _renderFiltersOption(itemsLists) {
-    for (let filter of FILTERSLIST) {
-      const itemsList = document.getElementById(`${filter}-list`);
-
-      let htmlContent = "";
-
-      for (let item of itemsLists[filter]) {
-        htmlContent += `<li>${item}</li>`;
-      }
-
-      itemsList.innerHTML = htmlContent;
-    }
-    this._resizeOpenedFilter();
-    this._addSearchWithFiltersEvents();
-  }
+  // _renderFiltersOption(itemsLists) {
+  //   for (let filter of FILTERSLIST) {
+  //     const itemsList = document.getElementById(`${filter}-list`);
+  //
+  //     let htmlContent = "";
+  //
+  //     for (let item of itemsLists[filter]) {
+  //       htmlContent += `<li>${item}</li>`;
+  //     }
+  //
+  //     itemsList.innerHTML = htmlContent;
+  //   }
+  //   this._resizeOpenedFilter();
+  //   this._addSearchWithFiltersEvents();
+  // }
 
 
   _renderCards(recipesList) {
