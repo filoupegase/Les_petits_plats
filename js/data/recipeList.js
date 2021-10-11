@@ -1,9 +1,26 @@
-import { sortAlpha } from "../utils/utilitis.js";
+import {
+  sortAlpha,
+  capFirstChar,
+  removeAccents,
+  removeStopWords,
+} from "../utils/utilitis.js";
 
 export class RecipeList {
   constructor(recipes) {
     this.recipes = recipes;
     this._sortByName();
+  }
+
+  get sortAppliances() {
+    return sortAlpha(this._collectAppliances());
+  }
+
+  get sortIngredients() {
+    return sortAlpha(this._collectIngredients());
+  }
+
+  get sortUstensils() {
+    return sortAlpha(this._collectUstensils());
   }
 
   _sortByName() {
@@ -19,7 +36,65 @@ export class RecipeList {
     });
   }
 
-  search(TEST_REQUEST_1, HASH_TABLE_FOR_SEARCHING_RECIPES) {
-    return undefined;
+  _collectAppliances() {
+    const appliances = new Set();
+
+    for (let recipe of this.recipes) {
+      appliances.add(capFirstChar(recipe.appliance));
+    }
+
+    return [...appliances];
+  }
+
+  _collectIngredients() {
+    const ingredients = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let item of recipe.ingredients) {
+        ingredients.add(capFirstChar(item.ingredient));
+      }
+    }
+
+    return [...ingredients];
+  }
+
+  _collectUstensils() {
+    const ustensils = new Set();
+
+    for (let recipe of this.recipes) {
+      for (let ustensil of recipe.ustensils) {
+        ustensils.add(capFirstChar(ustensil));
+      }
+    }
+
+    return [...ustensils];
+  }
+
+  search(userRequest, hashTableForSearchingRecipes) {
+    //console.log("Search recipes for", userRequest);
+
+    userRequest = `${userRequest.userInput} ${userRequest.joinBadges}`;
+
+    const words = userRequest.split(" ");
+    const keywords = removeStopWords(words);
+
+    let filteredRecipes = new Set(this.recipes);
+
+    for (let keyword of keywords) {
+      // get all recipes containing this keyword:
+      keyword = removeAccents(keyword);
+
+      const keywordRecipes =
+        keyword in hashTableForSearchingRecipes
+          ? hashTableForSearchingRecipes[keyword]
+          : new Set();
+
+      // intersect keywordRecipes with actual filteredRecipes:
+      filteredRecipes = new Set(
+        [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+      );
+    }
+
+    return new RecipeList([...filteredRecipes]);
   }
 }
