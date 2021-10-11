@@ -1,4 +1,9 @@
-import { sortAlpha, capFirstChar } from "../utils/utilitis.js";
+import {
+  sortAlpha,
+  capFirstChar,
+  removeAccents,
+  removeStopWords,
+} from "../utils/utilitis.js";
 
 export class RecipeList {
   constructor(recipes) {
@@ -65,7 +70,31 @@ export class RecipeList {
     return [...ustensils];
   }
 
-  search(TEST_REQUEST_1, HASH_TABLE_FOR_SEARCHING_RECIPES) {
-    return undefined;
+  search(userRequest, hashTableForSearchingRecipes) {
+    //console.log("Search recipes for", userRequest);
+
+    userRequest = `${userRequest.userInput} ${userRequest.joinBadges}`;
+
+    const words = userRequest.split(" ");
+    const keywords = removeStopWords(words);
+
+    let filteredRecipes = new Set(this.recipes);
+
+    for (let keyword of keywords) {
+      // get all recipes containing this keyword:
+      keyword = removeAccents(keyword);
+
+      const keywordRecipes =
+        keyword in hashTableForSearchingRecipes
+          ? hashTableForSearchingRecipes[keyword]
+          : new Set();
+
+      // intersect keywordRecipes with actual filteredRecipes:
+      filteredRecipes = new Set(
+        [...keywordRecipes].filter((recipe) => filteredRecipes.has(recipe))
+      );
+    }
+
+    return new RecipeList([...filteredRecipes]);
   }
 }

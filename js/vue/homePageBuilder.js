@@ -1,6 +1,6 @@
 import { RecipeCard } from "./_components/cards.js";
 
-const FILTERSLIST = ["ingredient", "appliance", "ustensil"];
+// const FILTERSLIST = ["ingredient", "appliance", "ustensil"];
 
 export class HomePageBuilder {
   constructor(recipeList, hashTableForSearchingRecipes) {
