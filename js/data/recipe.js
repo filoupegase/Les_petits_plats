@@ -21,11 +21,34 @@ export class Recipe {
     this.ustensils = ustensils;
   }
 
-  get applianceNameWithoutAccent(){
+  get joinedApplianceWithNoAccent() {
     return removeAccents(this.appliance);
   }
 
-  get nameFilterWithNoAccents() {
+  get descriptionWithNoAccent() {
+    return removeAccents(this.description);
+  }
+
+  get joinedIngredientsWithNoAccent() {
+    const ingredientsList = [];
+
+    for (let item of this.ingredients) {
+      ingredientsList.push(removeAccents(item.ingredients));
+    }
+    return ingredientsList.join(" ");
+  }
+
+  get nameFilterWithNoAccent() {
     return removeAccents(this.name);
+  }
+
+  get joinedUstensilsWithNoAccent() {
+    const ustensilsList = [];
+
+    for (let ustensils of this.ustensils) {
+      ustensilsList.push(removeAccents(ustensils));
+    }
+
+    return ustensilsList.join(" ")
   }
 }
