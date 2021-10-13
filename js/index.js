@@ -13,7 +13,7 @@ function makeHashTableForSearchingRecipes(recipesList) {
   const hashTableSearchingRecipes = {};
 
   for (let recipe of recipesList.recipes) {
-    let recipeWords = `${recipe.nameFilterWithNoAccents}`;
+    let recipeWords = `${recipe.nameFilterWithNoAccent} ${recipe.joinedIngredientsWithNoAccent} ${recipe.joinedApplianceWithNoAccent} ${recipe.joinedUstensilsWithNoAccent} ${recipe.descriptionWithNoAccent}`;
 
     recipeWords = recipeWords.split(" ");
 
@@ -31,6 +31,7 @@ function makeHashTableForSearchingRecipes(recipesList) {
       }
     }
   }
+
   return hashTableSearchingRecipes
 }
 
