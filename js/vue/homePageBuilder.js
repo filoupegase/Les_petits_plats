@@ -3,6 +3,12 @@ import { removeAccents } from "../utils/utilitis.js";
 
 const FILTERSLIST = ["ingredient", "appliance", "ustensil"];
 
+const BREAKPOINTS = {
+  small: 840,
+  medium: 1200,
+};
+const ITEMS_LINE_HEIGHT = 39; // for 39px
+
 export class HomePageBuilder {
   constructor(recipeList, hashTableForSearchingRecipes) {
     this._recipeList = recipeList;
@@ -87,6 +93,7 @@ export class HomePageBuilder {
         filterIcon.classList.remove("fa-chevron-up");
 
         itemsList.classList.add("closed");
+
         itemsList.style.height = 0;
       }
     }
@@ -110,6 +117,21 @@ export class HomePageBuilder {
     }
   }
 
+  _sizeFilterList(filter) {
+    const itemList = document.getElementById(`${filter}-list`);
+    const itemsLines = document.querySelectorAll(`#${filter}-list li`);
+    const windowWidth = window.innerWidth;
+    const columnsInList = windowWidth < BREAKPOINTS.small
+      ? 1
+      : windowWidth < BREAKPOINTS.medium
+        ? 2
+        : 3;
+    const itemsQuantity = itemsLines.length;
+
+    itemList.style.height = `${Math.ceil(itemsQuantity / columnsInList)
+    * ITEMS_LINE_HEIGHT}px`;
+  }
+
   _addSearchWithFiltersEvents() {
     for (let filter of FILTERSLIST) {
       const filterInput = document.getElementById(`${filter}`);
@@ -128,7 +150,7 @@ export class HomePageBuilder {
             ));
 
         this._renderFiltersOption(itemListsToDisplay);
-        this.sizeFilterList(filter);
+        this._sizeFilterList(filter);
       };
 
       filterInput.onsubmit = () => {
