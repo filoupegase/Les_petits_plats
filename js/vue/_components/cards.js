@@ -1,7 +1,7 @@
 export class RecipeCard {
-  constructor(recipe, cardId) {
+  constructor(recipe, _cardNumber) {
     this._recipe = recipe;
-    this._cardId = cardId;
+    this._cardNumber = _cardNumber;
   }
 
   _ingredientsHtml() {
@@ -25,7 +25,7 @@ export class RecipeCard {
   }
 
   get html() {
-    return `<article class="c-card lg4 md6 sm12" data-card-id="${this._cardId}">
+    return `<article class="c-card lg4 md6 sm12" data-card-id="${this._cardNumber}">
         <div class="c-card__img"></div>
         <div class="c-card__body">
           <h2 class="c-card__title">
