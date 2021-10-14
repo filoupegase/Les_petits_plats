@@ -53,3 +53,17 @@ function pushRecipeKeywordsToHashTable(recipe, recipeKeywords, hashTable) {
 
   return hashTable;
 }
+
+export function buildHashTableForSearchingRecipes(recipesList) {
+  let hashTableForSearchingRecipes = {};
+
+  for (let recipe of recipesList.recipes) {
+    const recipeKeywords = extractKeywordsFromRecipe(recipe);
+
+    hashTableForSearchingRecipes = pushRecipeKeywordsToHashTable(
+      recipe, recipeKeywords, hashTableForSearchingRecipes
+    );
+  }
+
+  return hashTableForSearchingRecipes;
+}

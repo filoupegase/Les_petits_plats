@@ -27,12 +27,7 @@ export class RecipeCard {
   get html() {
     return `
 <article class="c-card lg4 md6 sm12" data-card-id="${this._cardNumber}">
-        <div class="c-card__img">
-          <img 
-            src="./img/recipes/${this._recipe.cover}"
-            alt="${this._recipe.altText}"
-          />
-        </div>
+          <div class="c-card__img"></div>
         <div class="c-card__body">
           <h2 class="c-card__title">
             <span class="name">${this._recipe.name}</span>

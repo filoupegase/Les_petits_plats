@@ -37,8 +37,9 @@ export class Recipe {
     const ingredientsList = [];
 
     for (let item of this.ingredients) {
-      ingredientsList.push(removeAccents(item.ingredients));
+      ingredientsList.push(removeAccents(item.ingredient));
     }
+
     return ingredientsList.join(" ");
   }
 

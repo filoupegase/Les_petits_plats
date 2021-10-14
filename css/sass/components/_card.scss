@@ -37,13 +37,12 @@
   height: 14 * $grid-2;
   padding: $grid-2 $grid-2 0 $grid-2;
   overflow: hidden;
-
   text-align: center;
+  background-color: $neutral-600;
 
   img {
     width: 100%;
     border-radius: $grid-sm $grid-sm 0 0;
-
     object-fit: cover;
   }
 }
