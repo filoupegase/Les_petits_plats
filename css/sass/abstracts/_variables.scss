@@ -1,47 +1,10 @@
-// ======
-// COLORS
-// ======
-
-$primary: #d04f4f;
-
-$info-100: #c4dcff;
-$info-500: #3282f7;
-$info-900: #032250;
-
-$success-500: #68d9a4;
-
-$warning-100: #fed8b2;
-$warning-300: #f3b474;
-$warning-500: #ed8e2e;
-$warning-700: #94510d;
-$warning-900: #4d2a07;
-
-$danger-500: #ed6454;
-
-$neutral-200: #e7e7e7;
-$neutral-400: #c7bebe;
-$neutral-600: #a79c9c;
-$neutral-900: #353535;
-
-// ====================================
-// BREAKPOINTS AND CONTAINERS MAX-WIDTH
-// ====================================
-
-$small-breakpoint: 840px;
-$medium-breakpoint: 1200px;
-
-$small-container-width: 480px;
-$medium-container-width: 1024px;
-$large-container-width: 1340px;
-
 // ========
 // SPACINGS
 // ========
 
 $grid-1: 0.5rem; // for a grid based on a 8px unit if 1rem stays to 16px
 
-// geometric progression
-$grid-sm: $grid-1 / 2;
+$grid-sm: $grid-1 / 2; // geometric progression
 $grid-xs: $grid-1 / 4;
 
 $grid-2: $grid-1 * 2; // arithmetic progression
@@ -67,6 +30,32 @@ $z-special-case: 7000;
 $z-modal: 8000;
 $z-notification: 9000;
 
+// ======
+// COLORS
+// ======
+
+$primary: #d04f4f;
+
+$info-100: #c4dcff;
+$info-500: #3282f7;
+$info-900: #032250;
+
+$success-500: #68d9a4;
+
+$warning-100: #fed8b2;
+$warning-300: #f3b474;
+$warning-500: #ed8e2e;
+$warning-700: #94510d;
+$warning-900: #4d2a07;
+
+$danger-500: #ed6454;
+
+$neutral-100: #f6f6f6;
+$neutral-200: #e7e7e7;
+$neutral-400: #c7bebe;
+$neutral-600: #a79c9c;
+$neutral-900: #353535;
+
 // ==========
 // TYPOGRAPHY
 // ==========
@@ -88,3 +77,14 @@ $h4-size: 1.1 * $h5-size;
 $h3-size: 1.1 * $h4-size;
 $h2-size: 1.1 * $h3-size;
 $h1-size: 1.1 * $h2-size;
+
+// ====================================
+// BREAKPOINTS AND CONTAINERS MAX-WIDTH
+// ====================================
+
+$small-breakpoint: 840px;
+$medium-breakpoint: 1200px;
+
+$small-container-width: 480px;
+$medium-container-width: 1024px;
+$large-container-width: 1340px;

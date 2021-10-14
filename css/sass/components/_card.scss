@@ -2,21 +2,6 @@
    RECIPE CARD
    =========== */
 
-.c-card {
-  border-radius: $grid-sm;
-  overflow: hidden;
-
-  margin: 0 0 $grid-6 0;
-
-  opacity: 0;
-}
-
-@for $i from 0 to 50 {
-  [data-card-id="#{$i}"] {
-    animation: fade-in 500ms ease-out 50ms * $i forwards;
-  }
-}
-
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -31,20 +16,44 @@
   }
 }
 
-.c-card__img {
-  height: 11 * $grid-2;
+.c-card {
+  border-radius: $grid-1;
+  box-shadow: $grid-xs $grid-sm $grid-1 $neutral-200;
+  overflow: hidden;
 
-  background: $neutral-400;
+  margin: 0 0 $grid-6 0;
+
+  background: $neutral-100;
+  opacity: 0;
+}
+
+@for $i from 0 to 50 {
+  [data-card-id="#{$i}"] {
+    animation: fade-in 500ms ease-out 50ms * $i forwards;
+  }
+}
+
+.c-card__img {
+  height: 14 * $grid-2;
+  padding: $grid-2 $grid-2 0 $grid-2;
+  overflow: hidden;
+
+  text-align: center;
+
+  img {
+    width: 100%;
+    border-radius: $grid-sm $grid-sm 0 0;
+
+    object-fit: cover;
+  }
 }
 
 .c-card__body {
   position: relative;
 
   height: 14 * $grid-2;
-  padding: $grid-2 $grid-3;
+  padding: $grid-2;
   overflow: hidden;
-
-  background: $neutral-200;
 
   .c-card__title {
     display: flex;
@@ -95,7 +104,7 @@
 
     width: 100%;
 
-    background: $neutral-200;
+    background: $neutral-100;
 
     content: "";
   }
@@ -108,5 +117,15 @@
 
   &::after {
     height: $grid-3;
+  }
+}
+
+@media (min-width: $small-breakpoint) {
+  .c-card__img {
+    padding: $grid-3 $grid-3 0 $grid-3;
+  }
+
+  .c-card__body {
+    padding: $grid-2 $grid-3;
   }
 }

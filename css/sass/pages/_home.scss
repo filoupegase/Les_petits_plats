@@ -10,7 +10,7 @@ $filters-transition-duration: 150ms;
   border-radius: $grid-sm;
   overflow: hidden;
 
-  background: $neutral-200;
+  background: $neutral-100;
 
   input {
     width: calc(100% - 5rem);
@@ -18,7 +18,7 @@ $filters-transition-duration: 150ms;
     border: none;
     outline: none;
 
-    background: $neutral-200;
+    background: $neutral-100;
 
     &::placeholder {
       color: $neutral-600;
@@ -30,14 +30,12 @@ $filters-transition-duration: 150ms;
   }
 
   i {
-    //padding: 1.2 * $grid-2 $grid-2;
-    cursor: pointer;
-    padding: 1.4rem 2.1rem;
+    padding: 1.2 * $grid-2 $grid-2;
     border: none;
 
     font-size: $grid-3;
 
-    background: $neutral-200;
+    background: $neutral-100;
   }
 }
 
@@ -76,7 +74,6 @@ $filters-transition-duration: 150ms;
       border-radius: $grid-sm;
 
       cursor: pointer;
-
       transition: width $filters-transition-duration;
 
       input {
@@ -286,10 +283,9 @@ $filters-transition-duration: 150ms;
   text-align: right;
 
   background: $warning-500;
+  cursor: pointer;
   transform: translateY(5rem);
   transition: background-color 250ms, transform 300ms;
-
-  cursor: pointer;
 
   i {
     display: block;
