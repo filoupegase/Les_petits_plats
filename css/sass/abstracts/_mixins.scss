@@ -1,6 +1,5 @@
 // =====================================
 // WRAPPER MIXINS
-// to contain contents on larger screens
 // =====================================
 
 @mixin large-wrapper {
@@ -18,5 +17,5 @@
 @mixin small-wrapper {
   max-width: $small-container-width;
   margin: auto;
-  padding: 0 $grid-2;
+  padding: 0 $grid-1;
 }

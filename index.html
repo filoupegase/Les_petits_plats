@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="fr">
+<html class="no-js" lang="fr">
 
 <head>
     <title>Les petits plats</title>
@@ -42,10 +42,10 @@
     <!--    <script type="module" defer await src="js/data/fetchRecipes.js"></script>-->
 
 </head>
+
 <body>
 <header class="txt-center">
     <img
-            class="mt-2"
             src="img/logo-les-petits-plats.png"
             alt="Les petits plats"
             height="96"
@@ -53,7 +53,6 @@
 </header>
 
 <main>
-
     <!-- Dynamic search result message: -->
     <aside class="c-message" id="message">
         <span>Aucun résultat</span>
@@ -61,14 +60,14 @@
     </aside>
 
     <!-- Search bar: -->
-    <form class="p-search-bar mh-2" id="search-bar-form">
+    <form class="p-search-bar" id="search-bar-form">
         <input
                 class="txt-h5"
                 id="search-bar-input"
                 type="text"
                 placeholder="Rechercher une recette, un ingrédient, appareil ou ustensile"
         />
-        <i class="fas fa-search"> </i>
+        <i class="fas fa-search"></i>
     </form>
 
     <!-- Badges added dynamically: -->
@@ -129,12 +128,12 @@
     </div>
 
     <!-- Recipe cards added dynamically: -->
-    <div class="row-12 has-gutter-xl mt-2" id="cards-wrapper"></div>
+    <div class="row-12 has-gutter-xl" id="cards-wrapper"></div>
 
-    <!--    &lt;!&ndash; Floating button: &ndash;&gt;-->
-    <!--    <button id="up-button" type="button">-->
-    <!--        <i class="fas fa-arrow-up"></i>-->
-    <!--    </button>-->
+    <!-- Floating button: -->
+    <button id="up-button" type="button">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </main>
 </body>
 </html>
