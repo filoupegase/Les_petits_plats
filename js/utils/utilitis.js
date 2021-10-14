@@ -1,9 +1,9 @@
-import { FRENCH_STOP_WORDS } from "./stopWord.js";
+import { FRENCH_STOP_WORDS } from "./stopWords.js";
 
-const HASH_STOP_WORDS = [];
+const STOP_WORDS = [];
 
 for (let word of FRENCH_STOP_WORDS) {
-  HASH_STOP_WORDS.push(removeAccents(word))
+  STOP_WORDS.push(keepOnlyLettersAndRemoveAccents(word));
 }
 
 function trimWords(words) {
@@ -12,11 +12,21 @@ function trimWords(words) {
   for (let word of words) {
     trimmedWords.push(word.trim());
   }
+
   return trimmedWords;
 }
 
-export function removeAccents(str) {
-  return str.toString().toLowerCase()
+export function capitalizeFirstChar(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+/**
+ * @param {string} string
+ * @returns {string}
+ */
+export function keepOnlyLettersAndRemoveAccents(string) {
+  return string
+    .toLowerCase()
     .replace(/[.,;:!?*+"=/()°]/g, "")
     .replace(/[']/g, " ")
     .replace(/[\d]/g, "")
@@ -26,35 +36,31 @@ export function removeAccents(str) {
     .replace(/[îï]/g, "i")
     .replace(/[ôöÒ]/g, "o")
     .replace(/[ùû]/g, "u")
-    .replace(/[$S∑]/g, "s")
+    .replace(/[$S∑]/g, "s");
 }
+
 
 export function removeStopWords(words) {
   const trimmedWords = trimWords(words);
-  const filterWords = [];
+  const filteredWords = [];
 
   for (let word of trimmedWords) {
-    let wordWithoutAccent = removeAccents(words);
+    let wordWithoutAccent = keepOnlyLettersAndRemoveAccents(word);
 
-    if (word.length > 1 && !HASH_STOP_WORDS.includes(wordWithoutAccent)) {
-      filterWords.push(word);
+    if (word.length > 1 && !STOP_WORDS.includes(wordWithoutAccent)) {
+      filteredWords.push(word);
     }
   }
-  return filterWords;
+
+  return filteredWords;
 }
 
-/**
- * @return {string}
- */
-export function capFirstChar(str) {
-  return str[0].toUpperCase() + str.slice(1);
-}
 
-export function sortAlpha(string) {
+export function sortAlphabetically(strings) {
   const nonAccentuatedStrings = [];
 
-  for (let str of string) {
-    let nonAccentuatedStr = removeAccents(str);
+  for (let str of strings) {
+    let nonAccentuatedStr = keepOnlyLettersAndRemoveAccents(str);
 
     nonAccentuatedStrings.push([str, nonAccentuatedStr]);
   }
