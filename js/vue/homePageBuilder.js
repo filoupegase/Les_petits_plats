@@ -31,10 +31,13 @@ export class HomePageBuilder {
   }
 
   getRecipesListToDisplay() {
-    return this._recipesList.search(this._userRequest, this._hashTableForSearchingRecipes);
+    return this._recipesList.search(
+      this._userRequest,
+      this._hashTableForSearchingRecipes
+    );
   }
 
-  getItemsListToDisplay(recipesList) {
+  getItemsListsToDisplay(recipesList) {
     return {
       ingredient: recipesList.sortIngredients,
       appliance: recipesList.sortAppliances,
@@ -43,17 +46,17 @@ export class HomePageBuilder {
   }
 
   render() {
-    this._renderFiltersOption(this._filtersItems)
+    this._renderFiltersOptions(this._filtersItems);
     this._renderCards(this._recipesList);
 
     this._addSearchBarEvents();
     this._addOpenFiltersEvents();
     this._addCloseAllFiltersEvent();
     this._addResizeOpenedFilterListsEvent();
-    // this._addUpButtonEvent();
   }
 
-  _renderFiltersOption(itemsLists) {
+
+  _renderFiltersOptions(itemsLists) {
     for (let filter of FILTERSLIST) {
       const itemsList = document.getElementById(`${filter}-list`);
 
@@ -82,6 +85,7 @@ export class HomePageBuilder {
     cardsWrapper.innerHTML = htmlContent;
   }
 
+
   _closeAllFiltersExceptClicked(clickedFilter) {
     for (let filter of FILTERSLIST) {
       if (filter !== clickedFilter) {
@@ -99,8 +103,12 @@ export class HomePageBuilder {
     }
   }
 
+
   _createFilterBadge(filter, textContent) {
-    const filterBadgesWrapper = document.getElementById(`${filter}-badges-wrapper`);
+    const filterBadgesWrapper = document.getElementById(
+      `${filter}-badges-wrapper`
+    );
+
     const badgeDiv = document.createElement("div");
     const badgeSpan = document.createElement("span");
     const badgeCloseIcon = document.createElement("i");
@@ -138,17 +146,19 @@ export class HomePageBuilder {
 
         this._displaySearchResultMessage(recipesListToDisplay);
       }
-      this._renderFiltersOption(
-        this.getItemsListToDisplay(recipesListToDisplay)
+
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
       );
       this._renderCards(recipesListToDisplay);
 
-      this._renderFiltersOption(
-        this.getItemsListToDisplay(recipesListToDisplay)
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
       );
       this._renderCards(recipesListToDisplay);
     };
   }
+
 
   _displaySearchResultMessage(recipesList) {
     const messageAside = document.getElementById("message");
@@ -194,18 +204,28 @@ export class HomePageBuilder {
   _sizeFilterList(filter) {
     const itemsList = document.getElementById(`${filter}-list`);
     const itemsLines = document.querySelectorAll(`#${filter}-list li`);
+
     const windowWidth = window.innerWidth;
-    const columnsInList = windowWidth < BREAKPOINTS.small
-      ? 1
-      : windowWidth < BREAKPOINTS.medium
-        ? 2
-        : 3;
+    const columnsInList =
+      windowWidth < BREAKPOINTS.small
+        ? 1
+        : windowWidth < BREAKPOINTS.medium
+          ? 2
+          : 3;
 
     const itemsQuantity = itemsLines.length;
 
     itemsList.style.height = `${
       Math.ceil(itemsQuantity / columnsInList) * ITEMS_LINE_HEIGHT
     }px`;
+  }
+
+  _addCloseAllFiltersEvent() {
+    const body = document.querySelector("body");
+
+    body.onclick = () => {
+      this._closeAllFiltersExceptClicked();
+    };
   }
 
   _addCloseMessageEvent() {
@@ -217,14 +237,7 @@ export class HomePageBuilder {
     };
   }
 
-  _addCloseAllFiltersEvent() {
-    const bodySelector = document.querySelector("body");
-
-    bodySelector.onclick = () => {
-      this._closeAllFiltersExceptClicked();
-    };
-  }
-
+  /** Open ingredients/appliances/ustensils list when clicking on filter label. */
   _addOpenFiltersEvents() {
     for (let filter of FILTERSLIST) {
       const filterLabel = document.getElementById(`${filter}-filter-label`);
@@ -294,8 +307,8 @@ export class HomePageBuilder {
         messageAside.classList.remove("opened");
       }
 
-      this._renderFiltersOption(
-        this.getItemsListToDisplay(recipesListToDisplay)
+      this._renderFiltersOptions(
+        this.getItemsListsToDisplay(recipesListToDisplay)
       );
       this._renderCards(recipesListToDisplay);
     };
@@ -323,7 +336,7 @@ export class HomePageBuilder {
             )
         );
 
-        this._renderFiltersOption(itemsListsToDisplay);
+        this._renderFiltersOptions(itemsListsToDisplay);
         this._sizeFilterList(filter);
       };
 
@@ -336,6 +349,7 @@ export class HomePageBuilder {
       });
 
       itemsList.onclick = (e) => e.stopPropagation();
+
       for (let itemLine of itemsLines) {
         itemLine.onclick = () => {
           if (!this._badgesList.includes(itemLine.textContent)) {
@@ -343,8 +357,8 @@ export class HomePageBuilder {
 
             const recipesListToDisplay = this.getRecipesListToDisplay();
 
-            this._renderFiltersOption(
-              this.getItemsListToDisplay(recipesListToDisplay)
+            this._renderFiltersOptions(
+              this.getItemsListsToDisplay(recipesListToDisplay)
             );
             this._displaySearchResultMessage(recipesListToDisplay);
             this._renderCards(recipesListToDisplay);
@@ -355,23 +369,4 @@ export class HomePageBuilder {
       }
     }
   }
-
-  // _addUpButtonEvent() {
-  //   const upButton = document.getElementById("up-button");
-  //   const main = document.querySelector("main");
-  //
-  //   window.addEventListener("scroll", () => {
-  //     const mainRect = main.getBoundingClientRect();
-  //
-  //     if (mainRect.top < 0) {
-  //       upButton.classList.add("displayed");
-  //     } else {
-  //       upButton.classList.remove("displayed");
-  //     }
-  //   });
-  //
-  //   upButton.onclick = () => {
-  //     window.scroll(0, 0);
-  //   };
-  // }
 }
