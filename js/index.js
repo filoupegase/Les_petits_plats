@@ -9,38 +9,38 @@ import { HomePageBuilder } from "./vue/homePageBuilder.js";
 const dataFetcher = new FetchRecipes(RECIPES);
 const recipesList = dataFetcher.getListRecipe();
 
-function makeHashTableForSearchingRecipes(recipesList) {
-  const hashTableSearchingRecipes = {};
+// function makeHashTableForSearchingRecipes(recipesList) {
+//   const hashTableSearchingRecipes = {};
+//
+//   for (let recipe of recipesList.recipes) {
+//     // let recipeWords = `${recipe.nameFilterWithNoAccent} ${recipe.joinedIngredientsWithNoAccent} ${recipe.joinedApplianceWithNoAccent} ${recipe.joinedUstensilsWithNoAccent} ${recipe.descriptionWithNoAccent}`;
+//
+//     recipeWords = recipeWords.split(" ");
+//
+//     const recipeKeyWords = removeStopWords(recipeWords);
+//
+//     for (let keyword of recipeKeyWords) {
+//       for (let i = 1; i <= keyword.length; i++) {
+//         const truncatedKeyword = keyword.slice(0, i);
+//
+//         if (truncatedKeyword in hashTableSearchingRecipes) {
+//           hashTableSearchingRecipes[truncatedKeyword].add(recipe);
+//         } else {
+//           hashTableSearchingRecipes[truncatedKeyword] = new Set([recipe]);
+//         }
+//       }
+//     }
+//   }
+//
+//   return hashTableSearchingRecipes
+// }
 
-  for (let recipe of recipesList.recipes) {
-    let recipeWords = `${recipe.nameFilterWithNoAccent} ${recipe.joinedIngredientsWithNoAccent} ${recipe.joinedApplianceWithNoAccent} ${recipe.joinedUstensilsWithNoAccent} ${recipe.descriptionWithNoAccent}`;
+// const HASH_TABLE_FOR_SEARCHING_RECIPES =
+//   makeHashTableForSearchingRecipes(recipesList);
 
-    recipeWords = recipeWords.split(" ");
-
-    const recipeKeyWords = removeStopWords(recipeWords);
-
-    for (let keyword of recipeKeyWords) {
-      for (let i = 1; i <= keyword.length; i++) {
-        const truncatedKeyword = keyword.slice(0, i);
-
-        if (truncatedKeyword in hashTableSearchingRecipes) {
-          hashTableSearchingRecipes[truncatedKeyword].add(recipe);
-        } else {
-          hashTableSearchingRecipes[truncatedKeyword] = new Set([recipe]);
-        }
-      }
-    }
-  }
-
-  return hashTableSearchingRecipes
-}
-
-const HASH_TABLE_FOR_SEARCHING_RECIPES =
-  makeHashTableForSearchingRecipes(recipesList);
-
-console.log(HASH_TABLE_FOR_SEARCHING_RECIPES);
-
-new HomePageBuilder(recipesList, HASH_TABLE_FOR_SEARCHING_RECIPES).render();
+// console.log(HASH_TABLE_FOR_SEARCHING_RECIPES);
+//
+// new HomePageBuilder(recipesList, HASH_TABLE_FOR_SEARCHING_RECIPES).render();
 
 measureAlgorithmPerformance();
 
