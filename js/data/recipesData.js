@@ -1,5 +1,3 @@
-"use strict";
-
 export const RECIPES = [
   {
     id: 1,

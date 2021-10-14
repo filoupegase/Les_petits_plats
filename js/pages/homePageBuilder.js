@@ -1,13 +1,12 @@
-import { RecipeCard } from "./_components/cards.js";
-import { removeAccents } from "../utils/utilitis.js";
-
-const FILTERSLIST = ["ingredient", "appliance", "ustensil"];
+import { RecipeCard } from "./components/cards.js";
+import { keepOnlyLettersAndRemoveAccents } from "../utils/utilitis.js";
 
 const BREAKPOINTS = {
   small: 840,
   medium: 1200,
 };
-const ITEMS_LINE_HEIGHT = 39; // for 39px
+const FILTERS = ["ingredient", "appliance", "ustensil"];
+const ITEMS_LINE_HEIGHT = 39;
 
 export class HomePageBuilder {
   constructor(recipesList, hashTableForSearchingRecipes) {
@@ -15,9 +14,9 @@ export class HomePageBuilder {
     this._hashTableForSearchingRecipes = hashTableForSearchingRecipes;
     this._badgesList = [];
     this._filtersItems = {
-      ingredient: this._recipesList.sortIngredients,
-      appliance: this._recipesList.sortAppliances,
-      ustensil: this._recipesList.sortUstensils,
+      ingredient: this._recipesList.sortedIngredients,
+      appliance: this._recipesList.sortedAppliances,
+      ustensil: this._recipesList.sortedUstensils,
     };
   }
 
@@ -39,9 +38,9 @@ export class HomePageBuilder {
 
   getItemsListsToDisplay(recipesList) {
     return {
-      ingredient: recipesList.sortIngredients,
-      appliance: recipesList.sortAppliances,
-      ustensil: recipesList.sortUstensils,
+      ingredient: recipesList.sortedIngredients,
+      appliance: recipesList.sortedAppliances,
+      ustensil: recipesList.sortedUstensils,
     };
   }
 
@@ -55,9 +54,8 @@ export class HomePageBuilder {
     this._addResizeOpenedFilterListsEvent();
   }
 
-
   _renderFiltersOptions(itemsLists) {
-    for (let filter of FILTERSLIST) {
+    for (let filter of FILTERS) {
       const itemsList = document.getElementById(`${filter}-list`);
 
       let htmlContent = "";
@@ -85,9 +83,8 @@ export class HomePageBuilder {
     cardsWrapper.innerHTML = htmlContent;
   }
 
-
   _closeAllFiltersExceptClicked(clickedFilter) {
-    for (let filter of FILTERSLIST) {
+    for (let filter of FILTERS) {
       if (filter !== clickedFilter) {
         const filterLabel = document.getElementById(`${filter}-filter-label`);
         const filterIcon = document.getElementById(`${filter}-filter-icon`);
@@ -102,7 +99,6 @@ export class HomePageBuilder {
       }
     }
   }
-
 
   _createFilterBadge(filter, textContent) {
     const filterBadgesWrapper = document.getElementById(
@@ -146,7 +142,6 @@ export class HomePageBuilder {
 
         this._displaySearchResultMessage(recipesListToDisplay);
       }
-
       this._renderFiltersOptions(
         this.getItemsListsToDisplay(recipesListToDisplay)
       );
@@ -158,7 +153,6 @@ export class HomePageBuilder {
       this._renderCards(recipesListToDisplay);
     };
   }
-
 
   _displaySearchResultMessage(recipesList) {
     const messageAside = document.getElementById("message");
@@ -237,9 +231,8 @@ export class HomePageBuilder {
     };
   }
 
-  /** Open ingredients/appliances/ustensils list when clicking on filter label. */
   _addOpenFiltersEvents() {
-    for (let filter of FILTERSLIST) {
+    for (let filter of FILTERS) {
       const filterLabel = document.getElementById(`${filter}-filter-label`);
       const filterIcon = document.getElementById(`${filter}-filter-icon`);
       const filterInput = document.getElementById(`${filter}`);
@@ -298,6 +291,7 @@ export class HomePageBuilder {
           },
           this._hashTableForSearchingRecipes
         );
+
         this._displaySearchResultMessage(recipesListToDisplay);
       } else {
         recipesListToDisplay = this._recipesList;
@@ -320,7 +314,7 @@ export class HomePageBuilder {
   }
 
   _addSearchWithFiltersEvents() {
-    for (let filter of FILTERSLIST) {
+    for (let filter of FILTERS) {
       const filterInput = document.getElementById(`${filter}`);
       const itemsList = document.getElementById(`${filter}-list`);
       const itemsLines = document.querySelectorAll(`#${filter}-list li`);
@@ -331,8 +325,8 @@ export class HomePageBuilder {
 
         itemsListsToDisplay[filter] = itemsListsToDisplay[filter].filter(
           (item) =>
-            removeAccents(item).startsWith(
-              removeAccents(filterInput.value)
+            keepOnlyLettersAndRemoveAccents(item).startsWith(
+              keepOnlyLettersAndRemoveAccents(filterInput.value)
             )
         );
 
