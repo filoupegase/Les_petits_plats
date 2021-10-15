@@ -1,4 +1,3 @@
-// import { recipes } from "../data/recipes";
 const cardsInner = document.getElementById('cards-wrapper');
 const JsonUrl = "../data/recipes.json";
 
@@ -10,7 +9,6 @@ async function loadRecipes() {
   console.log(recipes);
 
   recipes.forEach(recipe => {
-    console.log(recipe);
 
     cardsInner.innerHTML += `<article class="c-card lg4 md6 sm12" data-card-id="${
       recipe.id
