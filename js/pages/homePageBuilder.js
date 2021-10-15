@@ -9,9 +9,8 @@ const FILTERS = ["ingredient", "appliance", "ustensil"];
 const ITEMS_LINE_HEIGHT = 39;
 
 export class HomePageBuilder {
-  constructor(recipesList, hashTableForSearchingRecipes) {
+  constructor(recipesList) {
     this._recipesList = recipesList;
-    this._hashTableForSearchingRecipes = hashTableForSearchingRecipes;
     this._badgesList = [];
     this._filtersItems = {
       ingredient: this._recipesList.sortedIngredients,
@@ -30,10 +29,7 @@ export class HomePageBuilder {
   }
 
   getRecipesListToDisplay() {
-    return this._recipesList.search(
-      this._userRequest,
-      this._hashTableForSearchingRecipes
-    );
+    return this._recipesList.search(this._userRequest);
   }
 
   getItemsListsToDisplay(recipesList) {
@@ -286,10 +282,9 @@ export class HomePageBuilder {
       } else if (this._badgesList.length > 0) {
         recipesListToDisplay = this._recipesList.search(
           {
-            userInput: "",
-            joinedBadges: this._userRequest.joinedBadges,
-          },
-          this._hashTableForSearchingRecipes
+          userInput: "",
+          joinedBadges: this._userRequest.joinedBadges,
+        },
         );
 
         this._displaySearchResultMessage(recipesListToDisplay);

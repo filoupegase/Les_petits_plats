@@ -136,7 +136,9 @@ export class RecipesList {
     return [...ustensils];
   }
 
-  search(userRequest, hashTableForSearchingRecipes) {
+  search(userRequest) {
+    // console.log("Search recipes for", userRequest);
+
     userRequest = `${userRequest.userInput} ${userRequest.joinedBadges}`;
 
     const words = userRequest.split(" ");
@@ -145,13 +147,22 @@ export class RecipesList {
     let filteredRecipes = new Set(this.recipes);
 
     for (let keyword of keywords) {
-      // get all recipes containing this keyword :
+      // find all recipes containing this keyword :
+      const keywordRecipes = new Set();
+
       keyword = keepOnlyLettersAndRemoveAccents(keyword);
 
-      const keywordRecipes =
-        keyword in hashTableForSearchingRecipes
-          ? hashTableForSearchingRecipes[keyword]
-          : new Set();
+      for (let recipe of this.recipes) {
+        if (
+          recipe.nameWithoutAccent.includes(keyword) ||
+          recipe.joinedIngredientsWithoutAccent.includes(keyword) ||
+          recipe.applianceNameWithoutAccent.includes(keyword) ||
+          recipe.joinedUstensilsWithoutAccent.includes(keyword) ||
+          recipe.descriptionWithoutAccent.includes(keyword)
+        ) {
+          keywordRecipes.add(recipe);
+        }
+      }
 
       // intersect keywordRecipes with actual filteredRecipes :
       filteredRecipes = new Set(
