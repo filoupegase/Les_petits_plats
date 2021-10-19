@@ -34,7 +34,7 @@ function measureAlgorithmPerformance() {
 
   let searchResult1, searchResult2;
 
-  for (let _ = 0; _ < TESTS_QUANTITY; _++) {
+  for (let i = 0; i < TESTS_QUANTITY; i++) {
     searchResult1 = recipesList.search(
       TEST_USER_REQUEST_1,
       HASH_TABLE_FOR_SEARCHING_RECIPES

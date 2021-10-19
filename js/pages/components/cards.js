@@ -24,6 +24,7 @@ export class RecipeCard {
     return htmlContent;
   }
 
+  // !!! To do: injection de code js
   get html() {
     return `<article class="c-card lg4 md6 sm12" data-card-id="${
       this._cardNumber
