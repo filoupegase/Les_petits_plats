@@ -1,6 +1,13 @@
 import { removeStopWords } from "../utils/utilitis.js";
 import { Recipe, RecipesList } from "./recipe.js";
 
+
+/**
+ * 1/
+ * @constructor
+ * @param {[{cover: string, appliance: string, servings: number, ustensils: string[], name: string, ingredients: [{unit: string, ingredient: string, quantity: number}, {ingredient: string, quantity: number}, {unit: string, ingredient: string, quantity: number}, {unit: string, ingredient: string, quantity: number}, {ingredient: string}], description: string, id: number, time: number}, {cover: string, appliance: string, servings: number, ustensils: [string], altText: string, name: string, ingredients, description: string, id: number, time: number}, {cover: string, appliance: string, servings: number, ustensils: [string], altText: string, name: string, ingredients, description: string, id: number, time: number}, {cover: string, appliance: string, servings: number, ustensils: string[], altText: string, name: string, ingredients, description: string, id: number, time: number}, {cover: string, appliance: string, servings: number, ustensils: string[], altText: string, name: string, ingredients, description: string, id: number, time: number}, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]} dataSource
+ * @return {recipes: Array.Object} RecipesList
+ */
 export class DataFetcher {
   constructor(dataSource) {
     this._dataSource = dataSource;
@@ -23,11 +30,12 @@ export class DataFetcher {
         )
       );
     }
-
+    // console.log(new RecipesList(recipes));
     return new RecipesList(recipes);
   }
 }
 
+// 1
 function extractKeywordsFromRecipe(recipe) {
   let recipeWords = `${recipe.nameWithoutAccent} ${recipe.joinedIngredientsWithoutAccent} ${recipe.applianceNameWithoutAccent} ${recipe.joinedUstensilsWithoutAccent} ${recipe.descriptionWithoutAccent}`;
 
@@ -36,15 +44,16 @@ function extractKeywordsFromRecipe(recipe) {
   return removeStopWords(recipeWords);
 }
 
+// 2
 function addRecipeKeywordsToHashTable(recipe, recipeKeywords, hashTable) {
   for (let keyword of recipeKeywords) {
     for (let i = 1; i <= keyword.length; i++) {
-      const troncatedKeyword = keyword.slice(0, i);
+      const truncatedKeyword = keyword.slice(0, i);
 
-      if (troncatedKeyword in hashTable) {
-        hashTable[troncatedKeyword].add(recipe);
+      if (truncatedKeyword in hashTable) {
+        hashTable[truncatedKeyword].add(recipe);
       } else {
-        hashTable[troncatedKeyword] = new Set([recipe]);
+        hashTable[truncatedKeyword] = new Set([recipe]);
       }
     }
   }
@@ -52,6 +61,7 @@ function addRecipeKeywordsToHashTable(recipe, recipeKeywords, hashTable) {
   return hashTable;
 }
 
+// 3
 export function buildHashTableForSearchingRecipes(recipesList) {
   let hashTableForSearchingRecipes = {};
 
