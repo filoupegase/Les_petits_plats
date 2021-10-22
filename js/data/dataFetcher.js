@@ -1,7 +1,6 @@
 import { removeStopWords } from "../utils/utilitis.js";
 import { Recipe, RecipesList } from "./recipe.js";
 
-
 /**
  * 1/
  * @constructor
@@ -21,6 +20,8 @@ export class DataFetcher {
         new Recipe(
           recipe.id,
           recipe.name,
+          recipe.cover,
+          recipe.altText,
           recipe.servings,
           recipe.ingredients,
           recipe.time,
@@ -35,7 +36,6 @@ export class DataFetcher {
   }
 }
 
-// 1
 function extractKeywordsFromRecipe(recipe) {
   let recipeWords = `${recipe.nameWithoutAccent} ${recipe.joinedIngredientsWithoutAccent} ${recipe.applianceNameWithoutAccent} ${recipe.joinedUstensilsWithoutAccent} ${recipe.descriptionWithoutAccent}`;
 
@@ -44,7 +44,6 @@ function extractKeywordsFromRecipe(recipe) {
   return removeStopWords(recipeWords);
 }
 
-// 2
 function addRecipeKeywordsToHashTable(recipe, recipeKeywords, hashTable) {
   for (let keyword of recipeKeywords) {
     for (let i = 1; i <= keyword.length; i++) {
@@ -61,7 +60,6 @@ function addRecipeKeywordsToHashTable(recipe, recipeKeywords, hashTable) {
   return hashTable;
 }
 
-// 3
 export function buildHashTableForSearchingRecipes(recipesList) {
   let hashTableForSearchingRecipes = {};
 
