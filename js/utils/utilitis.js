@@ -28,15 +28,17 @@ export function keepOnlyLettersAndRemoveAccents(string) {
   return string
     .toLowerCase()
     .replace(/[.,;:!?*+"=/()°]/g, "")
-    .replace(/[']/g, " ")
-    .replace(/[\d]/g, "")
-    .replace(/[àäâ]/g, "a")
-    .replace(/[ç€]/g, "c")
-    .replace(/[éèêë]/g, "e")
-    .replace(/[îï]/g, "i")
-    .replace(/[ôöÒ]/g, "o")
-    .replace(/[ùû]/g, "u")
-    .replace(/[$S∑]/g, "s");
+      .replace(/[']/g, " ")
+      .replace(/[\d]/g, "")
+      .replace(/[àáâäæãåā]/g, "a")
+      .replace(/[çćč€]/g, "c")
+      .replace(/[èéêëēėę]/g, "e")
+      .replace(/[îïíīįì]/g, "i")
+      .replace(/[ôöÒ]/g, "o")
+      .replace(/[ûüùúū]/g, "u")
+      .replace(/[$S∑]/g, "s")
+      .replace(/[ñń]/g, "n")
+      .replace(/[ÿ]/g, "y"))
 }
 
 
