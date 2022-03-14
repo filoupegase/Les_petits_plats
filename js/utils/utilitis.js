@@ -38,7 +38,7 @@ export function keepOnlyLettersAndRemoveAccents(string) {
       .replace(/[ûüùúū]/g, "u")
       .replace(/[$S∑]/g, "s")
       .replace(/[ñń]/g, "n")
-      .replace(/[ÿ]/g, "y"))
+      .replace(/[ÿ]/g, "y")
 }
 
 
