@@ -1,2 +1,2 @@
 # les_petits_plats
-Développez un algorithme de recherche en JavaScript
+👨🏻‍🍳 A powerful recipe search algorithm in JavaScript.
