@@ -360,7 +360,7 @@ export class HomePageBuilder {
 
                         window.scrollTo(0, 0);
                     }
-                }
+                };
             }
         }
     }
